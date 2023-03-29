@@ -57,7 +57,21 @@ def show_madlib_form():
     if response == "no":
         return render_template("goodbye.html")
     if response == "yes":
-        return render_template("hello.html")
+        return render_template("game.html")
+
+@app.route("/madlib")
+def show_madlib():
+    """Display the madlib the user has created"""
+    person = request.args.get("person")
+    color = request.args.get("color")
+    noun = request.args.get("noun")
+    adj = request.args.get("adj")
+    city = request.args.get("city")
+    if request.args.get("spooky"):
+        spooky = True
+    else:    
+        spooky = False
+    return render_template("madlib.html", person=person, color=color, noun=noun, adj=adj, city=city, spooky=spooky)
 
 if __name__ == "__main__":
     # Setting debug=True gives us error messages in the browser and also

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>Your madlib</title>
+</head>
+<body>
+
+Your madlib is: 
+<br>
+
+{% if spooky %}
+There once was a ghost {{ color }} {{ noun }} sitting in the ghastly Hackbright Lab in {{ city}}.
+When {{ person }} went to pick it up, it burst into flames in a totally
+{{ adj }} way.
+
+{% else %}
+There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab in {{ city}}.
+When {{ person }} went to pick it up, it burst into flames in a totally
+{{ adj }} way.
+{% endif %}
+</body>
+</html>
