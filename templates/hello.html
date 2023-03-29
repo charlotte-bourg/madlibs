@@ -1,10 +1,5 @@
-<!doctype html>
-<html>
-<head>
-  <title>Hi There!</title>
-</head>
-<body>
-
+{% extends 'base.html' %}
+{% block content %}
 <h1>Hi There!</h1>
 
 <form action="/greet">
@@ -12,5 +7,4 @@
   <input type="submit">
 </form>
 
-</body>
-</html>
+{% endblock %}

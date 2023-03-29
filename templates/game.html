@@ -1,13 +1,9 @@
-<!doctype html>
-<html>
-<head>
-  <title>Madlibs</title>
-</head>
-<body>
-
+{% extends 'base.html' %}
+{% block content %}
 <h1>Welcome to the madlibs game</h1>
-
-<form action="/madlib">
+To use a POST request for your madlib, enter data here: 
+<br> 
+<form action="/madlib" method="POST">
   Enter a person: <input type="text" name="person">
   <br>
   Enter a color: <input type="text" name="color">
@@ -27,6 +23,26 @@
   <br>
   <input type="submit">
 </form>
-
-</body>
-</html>
+To use a GET request for your madlib, enter data here: 
+<br>
+<form action="/madlib" method="GET">
+  Enter a person: <input type="text" name="person">
+  <br>
+  Enter a color: <input type="text" name="color">
+  <br>
+  Enter a noun: <input type="text" name="noun">
+  <br>
+  Enter an adjective: <input type="text" name="adj">
+  <br>
+  Choose a city: <select name="city">
+    <option value="San Francisco">San Francisco</option>
+    <option value="Oakland">Oakland</option>
+    <option value="LA">LA</option>
+  </select>
+  <br>
+  Would you like the spooky version of the madlib?
+  <input type="checkbox" name="spooky">
+  <br>
+  <input type="submit">
+</form>
+{% endblock %}

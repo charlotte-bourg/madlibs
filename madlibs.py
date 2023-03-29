@@ -1,6 +1,6 @@
 """A madlib game that compliments its users."""
 
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -46,9 +46,9 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    compliments = sample(AWESOMENESS,3)
 
-    return render_template("compliment.html", person=player, compliment=compliment)
+    return render_template("compliment.html", person=player, compliments=compliments)
 
 @app.route("/game")
 def show_madlib_form():
@@ -59,18 +59,30 @@ def show_madlib_form():
     if response == "yes":
         return render_template("game.html")
 
-@app.route("/madlib")
+@app.route("/madlib", methods=['POST','GET'])
 def show_madlib():
     """Display the madlib the user has created"""
-    person = request.args.get("person")
-    color = request.args.get("color")
-    noun = request.args.get("noun")
-    adj = request.args.get("adj")
-    city = request.args.get("city")
-    if request.args.get("spooky"):
-        spooky = True
-    else:    
-        spooky = False
+    if request.method == 'POST':
+        person = request.form.get("person") 
+        color = request.form.get("color")
+        noun = request.form.get("noun")
+        adj = request.form.get("adj")
+        city = request.form.get("city")
+        if request.form.get("spooky"):
+            spooky = True
+        else:    
+            spooky = False
+    if request.method == 'GET':
+        person = request.args.get("person")
+        color = request.args.get("color")
+        noun = request.args.get("noun")
+        adj = request.args.get("adj")
+        city = request.args.get("city")
+        if request.args.get("spooky"):
+            spooky = True
+        else:    
+            spooky = False
+    
     return render_template("madlib.html", person=person, color=color, noun=noun, adj=adj, city=city, spooky=spooky)
 
 if __name__ == "__main__":

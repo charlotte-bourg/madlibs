@@ -1,10 +1,5 @@
-<!doctype html>
-<html>
-<head>
-  <title>Your madlib</title>
-</head>
-<body>
-
+{% extends 'base.html' %}
+{% block content %}
 Your madlib is: 
 <br>
 
@@ -18,5 +13,4 @@ There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab in {{ city
 When {{ person }} went to pick it up, it burst into flames in a totally
 {{ adj }} way.
 {% endif %}
-</body>
-</html>
+{% endblock %}
